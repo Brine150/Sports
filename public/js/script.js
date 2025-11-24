@@ -1,11 +1,19 @@
  const loginForm = document.getElementById("login-form");
     const registerForm = document.getElementById("register-form");
     const formTitle = document.getElementById("form-title");
+   
+    const showRegister = document.querySelector("#showRegister")
+     console.log(showRegister);
 
-    function showRegister() {
-      loginForm.classList.remove("active");
-      registerForm.classList.add("active");
-      formTitle.textContent = "Register";
+    // function showRegister() {
+    //   loginForm.classList.remove("active");
+    //   registerForm.classList.add("active");
+    //   formTitle.textContent = "Register";
+    // }
+  alert('what is it');
+    showRegister.onclick = ()=>{
+
+      alert('what is it');
     }
 
     function showLogin() {
@@ -43,3 +51,6 @@
       alert("Registration Successful!\nWelcome, " + name);
       showLogin();
     }
+
+
+   

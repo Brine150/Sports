@@ -1,8 +1,24 @@
+import { useState } from "react";
+
 function Login (){
+
+
+const [toggle, setToggle]= useState("login")
+
+
+
+
+
+
+
+
+
     return(
       <>
+
+      
       <div className="LoginImg">
-         <div className="loginform">
+         { toggle =="login" ? (<div className="loginform">
   <h1 id="form-title">Login</h1>
   <form id="login-form" className="form active">
     <div className="input-box">
@@ -14,9 +30,10 @@ function Login (){
       <label>Password</label>
     </div>
     <button type="button" onclick="login()">Login</button>
-    <p className="toggle-text">Don’t have an account? <a onclick="showRegister()">Register</a></p>
+    <p className="toggle-text">Don’t have an account? <a onclick="showRegister()" id="showRegister">Register</a></p>
   </form>
-  <form id="register-form" className="form">
+  </div>) :(  <div>
+  <form id="register-form" className="forms">
     <div className="input-box">
       <input type="text" id="reg-name" required />
       <label>Full Name</label>
@@ -38,7 +55,13 @@ function Login (){
       <p className="toggle-text">Already have an account? <a onclick="showLogin()">Login</a></p>
     </div>
   </form>
-</div>
+</div>)
+         
+
+
+         }
+
+
       </div>
 
        <footer className="footer" id="page-footer">
