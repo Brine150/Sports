@@ -1,5 +1,33 @@
+import api from "../axios"
+import React, { useState } from "react";
+
 
 function ContactUs (){
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+
+    try {
+      const res = await api.post("http://localhost:5000/api/contact", formData);
+      alert("Message sent successfully");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error(error.message);
+      alert("Failed to send message");
+    }
+  };
+
   return(
     <>
     
@@ -7,18 +35,18 @@ function ContactUs (){
   <div className="contact-container">
     <h2>Contact Us</h2>
     <p className="subtitle">We’d love to hear from you. Send us a message!</p>
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="input-box">
         <label>Your Name</label>
-        <input type="text" placeholder="John Doe" required />
+        <input type="text" placeholder="John Doe" name="name" value={formData.name} onChange={handleChange} required />
       </div>
       <div className="input-box">
         <label>Email Address</label>
-        <input type="email" placeholder="example@mail.com" required />
+        <input type="email" placeholder="example@mail.com" name="email" value={formData.email} onChange={handleChange} required />
       </div>
       <div className="input-box">
         <label>Message</label>
-        <textarea placeholder="Type your message..." required defaultValue={""} />
+        <textarea placeholder="Type your message..." name="message" value={formData.message} onChange={handleChange} required />
       </div>
       <button type="submit">Send</button>
     </form>

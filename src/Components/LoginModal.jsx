@@ -1,11 +1,43 @@
 import React, { useState } from "react";
+import api, {setToken} from "../axios";
+import {useNavigate } from "react-router-dom";
 
 
 
 function LoginRegisterModal({ open, onClose }) {
   const [isLogin, setIsLogin] = useState(true);
+  const [username, setUsername]= useState("");
+  const [email,setEmail]= useState("");
+  const [password,setPassword]=useState("");
+  const navigate = useNavigate();
 
   if (!open) return null;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try{
+
+       if (isLogin) {
+        const res = await api.post("/auth/login", { email, password });
+        console.log("REGISTER RESPONSE:", res.data);
+        setToken(res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        alert("Logged in successfully!");
+        navigate("/dashboard");
+      } else {
+        const res = await api.post("/auth/register", { username, email, password });
+        setToken(res.data.token);
+        alert("Registered successfully!");
+      }
+      onClose();
+
+    }catch(err) {
+          console.log("FULL ERROR:", err);
+          console.log("STATUS:", err.response?.status);
+          console.log("DATA:", err.response?.data);
+          alert(err.response?.data?.message || "Login failed");
+    }
+  }
 
   return (
     <div
@@ -44,11 +76,13 @@ function LoginRegisterModal({ open, onClose }) {
 
         
         {isLogin && (
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type="email"
               placeholder="Email"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               style={{ width: "100%", padding: "10px", marginBottom: "10px",borderRadius:"30px", border:"none" }}
               
             />
@@ -58,6 +92,8 @@ function LoginRegisterModal({ open, onClose }) {
               type="password"
               placeholder="Password"
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               style={{ width: "100%", padding: "10px", marginBottom: "10px",borderRadius:"30px", border:"none"}}
             />
             
@@ -80,11 +116,13 @@ function LoginRegisterModal({ open, onClose }) {
 
         
         {!isLogin && (
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Username"
               required
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               style={{ width: "100%", padding: "10px", marginBottom: "10px",borderRadius:"30px",border:"none"}}
             />
 
@@ -92,6 +130,8 @@ function LoginRegisterModal({ open, onClose }) {
               type="email"
               placeholder="Email"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               style={{ width: "100%", padding: "10px", marginBottom: "10px",borderRadius:"30px",border:"none" }}
             />
 
@@ -100,6 +140,8 @@ function LoginRegisterModal({ open, onClose }) {
               type="password"
               placeholder="Password"
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               style={{ width: "100%", padding: "10px", marginBottom: "10px",borderRadius:"30px",border:"none"}}
             />
 

@@ -2,8 +2,8 @@ function Home(){
 return(
     <>
         <div className="hero">
-            <img src="images/football.jpg" alt />
-            <img src="images/mike.jpg" alt />
+            <img src="images/football.jpg" alt="football" />
+            <img src="images/mike.jpg" alt={true} />
             <h1 className="image-text">Welcome!! to your home of <br /> sports</h1>
         </div>
 
@@ -11,22 +11,22 @@ return(
   <section className="main-content">
     <h1 className="h1">Transfers</h1>
     <div className="card">
-      <img src="images/jao.webp" alt />
+      <img src="images/jao.webp" alt="jao" />
       <h3 className="h3">BREAKING:</h3>
       <p className="p">Al-Nassar agree deal worth up to 43.7m to sign Joao Felix from Chelsea</p>
     </div>
     <div className="card">
-      <img src="images/Rashford.png" alt />
+      <img src="images/Rashford.png" alt="rashford"  />
       <h3>BREAKING:</h3>
       <p className="p">Marcus Rashford finalises Barcelona loan move from Man Utd.</p>
     </div>
     <div className="card">
-      <img src="images/viktor.jpg" alt />
+      <img src="images/viktor.jpg" alt="viktor" />
       <h3 className="h3">BREAKING:</h3>
       <p className="p">Arsenal sign Viktor Gyokeres from Sporting.</p>
     </div>
     <div className="card">
-      <img src="images/Rodri.webp" alt />
+      <img src="images/Rodri.webp" alt="rodri"  />
       <h3 className="h3">BREAKING:</h3>
       <p className="p">Real Madrid preparing 100m bid for Rodri| paper talk latest </p>
     </div>
@@ -34,28 +34,28 @@ return(
   <section className="main-content">
     <h1 className="h1">Latest News</h1>
     <div className="card">
-      <img src="images/Alexander.webp" alt />
+      <img src="images/Alexander.webp" alt="alexander"  />
       <h3 className="h3">News:</h3>
       <p className="p">Alexander Isak not in Newcastle pre-season tour squad.</p>
     </div>
     <div className="card">
-      <img src="images/rugby.jpg" alt />
+      <img src="images/rugby.jpg" alt="rubgy" />
       <h3 className="h3">Rugby:</h3>
       <p className="p">Australia vs British &amp; Irish Lions Second Test.</p>
     </div>
     <div className="card">
-      <img src="images/Bruno.jpg" alt />
+      <img src="images/Bruno.jpg" alt="bruno" />
       <h3 className="h3">Football:</h3>
       <p className="p">First win on pre-season tour|Man Utd 2 - 1 West Ham.</p>
     </div>
     <div className="card">
-      <img src="images/Formular1.jpg" alt />
+      <img src="images/Formular1.jpg" alt="formular1"  />
       <h3 className="h3">Formular 1:</h3>
       <p className="p">Drivers react after the race|2025 Belgian Grand Prix.</p>
     </div>
   </section>
   <div className>
-    <img src="images/ad.png" alt className="ad" />
+    <img src="images/ad.png" alt="imgAd"  className="ad" />
   </div>
   <section className="main-content">
     <h1 className="h1">Watch</h1>
